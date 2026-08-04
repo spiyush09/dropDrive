@@ -1,10 +1,10 @@
-# DumpStation
+# DropDrive
 
 > A personal tool born out of a simple frustration.
 
 I found myself constantly needing to save files to Google Drive — images, videos, documents, random stuff — and every single time it was the same annoying routine: open Drive, wait for it to load, log in if the session expired, deal with 2FA, navigate to the right folder, upload. Just to save one file.
 
-So I built DumpStation. Open the URL, drop the file, done. No login prompt, no 2FA, no waiting. It just works — every time, from any device, instantly. I have it deployed and running for my own personal use. One-time setup, zero maintenance.
+So I built DropDrive. Open the URL, drop the file, done. No login prompt, no 2FA, no waiting. It just works — every time, from any device, instantly. I have it deployed and running for my own personal use. One-time setup, zero maintenance.
 
 It's a private, minimal web app that uploads files directly to a specific Google Drive folder via a drag-and-drop interface. The auth is set up once and works permanently in the background. You never have to think about it again.
 
@@ -34,7 +34,7 @@ Google Drive restricts Service Accounts from uploading files to personal drives 
 Follow these exact steps to configure your GCP project:
 
 1. Go to the [Google Cloud Console](https://console.cloud.google.com/).
-2. Create a new project (e.g., "DumpStation").
+2. Create a new project (e.g., "DropDrive").
 3. Go to **APIs & Services > Library**, search for **Google Drive API**, and click **Enable**.
 4. Go to **APIs & Services > OAuth consent screen**:
    - Choose **External** and hit Create.
@@ -50,7 +50,7 @@ Follow these exact steps to configure your GCP project:
 
 ### 2. Google Drive Folder Setup
 
-1. Open your Google Drive and create a folder named `DumpStation` where you want the files to go.
+1. Open your Google Drive and create a folder named `DropDrive` where you want the files to go.
 2. Open that folder and look at the URL. It will look like `https://drive.google.com/drive/u/0/folders/1zOroadRP...`
 3. Copy the long ID at the end of the URL (or copy the whole URL, the app will parse it).
 4. Create a `.env` file in the root of the project by copying the `.env.example` file, and paste your folder ID or URL.
@@ -86,7 +86,7 @@ The core code is highly stable and relies directly on official Google infrastruc
 
 However, your **Google Authentication Token** could potentially be invalidated by Google if:
 - You change your Google Account password.
-- You explicitly revoke DumpStation's access in your Google Account Security settings.
+- You explicitly revoke DropDrive's access in your Google Account Security settings.
 - Google forces a security reset.
 
 ### The 60-Second Recovery
