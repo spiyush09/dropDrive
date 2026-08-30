@@ -34,13 +34,18 @@ function createProgressUI(id, filename) {
 
     item.innerHTML = `
         <div class="item-header">
-            <span class="filename" title="${filename}">${filename}</span>
+            <span class="filename"></span>
             <span class="status" id="status-${id}">STARTING</span>
         </div>
         <div class="progress-container">
             <div class="progress-bar" id="progress-${id}"></div>
         </div>
     `;
+
+    // Use textContent to avoid HTML injection via filenames
+    const nameEl = item.querySelector('.filename');
+    nameEl.textContent = filename;
+    nameEl.title = filename;
 
     uploadList.prepend(item);
 }

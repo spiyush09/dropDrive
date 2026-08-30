@@ -5,7 +5,11 @@ const path = require('path');
 const { getResumableUploadUrl } = require('./googleDriveService');
 
 const app = express();
-app.use(cors());
+
+// Restrict CORS to the deployed frontend only
+const allowedOrigin = process.env.ALLOWED_ORIGIN;
+app.use(cors(allowedOrigin ? { origin: allowedOrigin } : {}));
+
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
